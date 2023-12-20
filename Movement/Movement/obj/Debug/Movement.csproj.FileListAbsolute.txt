@@ -1,0 +1,7 @@
+C:\Users\akkaf\OneDrive\Masaüstü\Movement\Movement\Movement\bin\Debug\Movement.exe.config
+C:\Users\akkaf\OneDrive\Masaüstü\Movement\Movement\Movement\bin\Debug\Movement.exe
+C:\Users\akkaf\OneDrive\Masaüstü\Movement\Movement\Movement\bin\Debug\Movement.pdb
+C:\Users\akkaf\OneDrive\Masaüstü\Movement\Movement\Movement\obj\Debug\Movement.csproj.AssemblyReference.cache
+C:\Users\akkaf\OneDrive\Masaüstü\Movement\Movement\Movement\obj\Debug\Movement.csproj.CoreCompileInputs.cache
+C:\Users\akkaf\OneDrive\Masaüstü\Movement\Movement\Movement\obj\Debug\Movement.exe
+C:\Users\akkaf\OneDrive\Masaüstü\Movement\Movement\Movement\obj\Debug\Movement.pdb
