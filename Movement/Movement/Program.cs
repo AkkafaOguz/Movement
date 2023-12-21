@@ -14,8 +14,12 @@ namespace Movement
             map.GetMapDimensionsFromUser();
 
             var movement = new Movement(map);
-            movement.GetMovementCoordinatesFromUser();
+            List <int> coordinates = movement.GetMovementCoordinatesFromUser();
             movement.GetLifeFormFromUser();
+
+            var human = new Human();
+            human.GenerateRootCoordinates(coordinates);
+
 
         }
     }

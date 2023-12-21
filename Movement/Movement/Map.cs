@@ -14,7 +14,7 @@ namespace Movement
         public void GetMapDimensionsFromUser()
         {
 
-            Console.WriteLine("Please enter dimensions of map in the order width(w) and height(h)");
+            Console.WriteLine("Please enter dimensions of map in the order height(h) and width(w)");
 
             Width = Console.ReadLine();
             Height = Console.ReadLine();
