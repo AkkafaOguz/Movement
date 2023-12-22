@@ -7,12 +7,11 @@ namespace Movement
     {
         private readonly List<int[]> _movementPath = new List<int[]>();
 
-        public List<int[]> GenerateRootCoordinates(List<int> movementCoordinates)
+        public List<int[]> GenerateRootCoordinates(List<int> movementCoordinates, int width, int height)
         {
-            List<int[]> coordinates = new List<int[]>();
             var coordinatesNum = movementCoordinates.Count / 2;
 
-            for (int i = 0; i < coordinatesNum; i++)
+            for (var i = 0; i < coordinatesNum; i++)
             {
                 if (_movementPath.Count == 0)
                 {
@@ -27,30 +26,24 @@ namespace Movement
                     var updatedWidthPath = lastRecordedWidthPath + movementCoordinates[0];
                     var updatedHeightPath = lastRecordedHeightPath + movementCoordinates[1];
 
-                    if (updatedWidthPath <= Width && updatedHeightPath <= Height)
+                    if (updatedWidthPath <= width && updatedHeightPath <= height)
                     {
                         _movementPath.Add(new int[] { updatedHeightPath, updatedWidthPath });
                         movementCoordinates.RemoveRange(0, 2);
                     }
-                    else if (updatedWidthPath <= Width && updatedHeightPath > Height)
+                    else if (updatedWidthPath <= width && updatedHeightPath > height)
                     {
                         _movementPath.Add(new int[] { 0, updatedWidthPath });
                         movementCoordinates.RemoveRange(0, 2);
                     }
-                    else if (updatedWidthPath > Width && updatedHeightPath <= Height)
+                    else if (updatedWidthPath > width && updatedHeightPath <= height)
                     {
                         _movementPath.Add(new int[] { updatedHeightPath, 0 });
                         movementCoordinates.RemoveRange(0, 2);
                     }
                 }
             }
-
-            foreach (var x in _movementPath)
-            {
-                Console.WriteLine("[" + string.Join(",", x) + "]");
-            }
-
-            return coordinates;
+            return _movementPath;
         }
     }
 }

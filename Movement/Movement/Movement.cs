@@ -6,18 +6,6 @@ namespace Movement
     public class Movement : Map
     {
         private readonly List<int> _movementCoordinates = new List<int>();
-        private Map map;
-        private Human human = new Human();
-        private Alien alien = new Alien();
-
-        public Movement()
-        {
-        }
-
-        public Movement(Map map)
-        {
-            this.map = map;
-        }
 
         public List<int> GetMovementCoordinatesFromUser()
         {
@@ -92,22 +80,14 @@ namespace Movement
                 }
                 catch (FormatException)
                 {
-                    Console.WriteLine("Please enter a valid numberic value ('1' OR '2')");
+                    Console.WriteLine("Please enter a valid numeric value ('1' OR '2')");
                 }
             }
 
             return inputNumber;
         }
 
-        public void GenerateRootCoordinates(int lifeForm, List<int> coordinates)
-        {
-            if (lifeForm == 1)
-                ReportPathAndActualCoordinate(human.GenerateRootCoordinates(coordinates));
-            else
-                ReportPathAndActualCoordinate(alien.GenerateRootCoordinates(coordinates));
-        }
-
-        private void ReportPathAndActualCoordinate(List<int[]> movementCoordinates)
+        public void ReportPathAndActualCoordinate(List<int[]> movementCoordinates)
         {
             Console.WriteLine("Report Path:");
 

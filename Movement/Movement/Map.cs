@@ -11,18 +11,32 @@ namespace Movement
         public int Width { get; set; }
         public int Height { get; set; }
 
-        public void GetMapDimensionsFromUser()
+        public Map GetMapDimensionsFromUser()
         {
 
             Console.WriteLine("Please enter dimensions of map in the order width(w) and height(h)");
+            var inputList = new List<int>();
 
-            Height = Convert.ToInt32(Console.ReadLine());
-            Width = Convert.ToInt32(Console.ReadLine());
+            while (inputList.Count != 2)
+            {
+                try
+                {
+                    var input = Convert.ToInt32(Console.ReadLine());
+                    inputList.Add(input);
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Please enter a valid numeric value");
+                }
+            }
 
+            Width = inputList[0];
+            Height = inputList[1];
+            
             Console.WriteLine("Width of the map: {0}", Width);
             Console.WriteLine("Height of the map: {0}", Height);
-            
-            
+
+            return this;
         }
     }
 }
