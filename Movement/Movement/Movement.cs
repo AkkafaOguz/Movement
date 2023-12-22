@@ -26,9 +26,9 @@ namespace Movement
             { 
                 try
                 {
-                    input = Console.ReadLine().ToUpper();
-                    if (IsValueValid(input)) 
-                    _movementCoordinates.Add(Convert.ToInt32(input));
+                    input = Console.ReadLine()?.ToUpper();
+                    if (IsCoordinateValueValid(input)) 
+                        _movementCoordinates.Add(Convert.ToInt32(input));
                 }
                 catch (FormatException)
                 {
@@ -43,16 +43,11 @@ namespace Movement
                         input = "";
                     }
                 }
-
-            }
-            foreach (var x in _movementCoordinates)
-            {
-                Console.WriteLine(x);
             }
             return _movementCoordinates;
         }
 
-        private bool IsValueValid(string input)
+        private bool IsCoordinateValueValid(string input)
         {
             var item = Math.Abs(Convert.ToInt32(input));
             var isValueValid = true;
@@ -77,11 +72,37 @@ namespace Movement
             return isValueValid;
         }
 
-        public void GetLifeFormFromUser()
+        public string GetLifeFormFromUser()
         {
-            // write code for edge cases
             Console.WriteLine("Please enter a life form: \nPress '1' for Human \nPress '2' for Alien");
-            LifeFormOption = Console.ReadLine();
+            var input = "";
+            
+            while (!input.Equals("1") || !input.Equals("2"))
+            {
+                try
+                {
+                    input = Console.ReadLine();
+                    if (IsCoordinateValueValid(input))
+                        _movementCoordinates.Add(Convert.ToInt32(input));
+                }
+                catch (FormatException)
+                {
+                    if (!input.Equals("DONE"))
+                        Console.WriteLine("Please enter a valid value");
+                }
+                finally
+                {
+                    if (input.Equals("DONE") && _movementCoordinates.Count % 2 != 0)
+                    {
+                        Console.WriteLine("You should enter coordinates as pair (X,Y). Please enter a value for 'Y'");
+                        input = "";
+                    }
+                }
+            }
+            
+            
+            
+            return Console.ReadLine();
         }
 
         
