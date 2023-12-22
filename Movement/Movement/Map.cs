@@ -8,19 +8,21 @@ namespace Movement
 {
     public class Map
     {
-        public string Width { get; set; }
-        public string Height { get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
 
         public void GetMapDimensionsFromUser()
         {
 
-            Console.WriteLine("Please enter dimensions of map in the order height(h) and width(w)");
+            Console.WriteLine("Please enter dimensions of map in the order width(w) and height(h)");
 
-            Width = Console.ReadLine();
-            Height = Console.ReadLine();
+            Height = Convert.ToInt32(Console.ReadLine());
+            Width = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Width of the map: {0}", Width);
             Console.WriteLine("Height of the map: {0}", Height);
+            
+            
         }
     }
 }
