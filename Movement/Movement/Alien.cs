@@ -7,7 +7,7 @@ namespace Movement
     {
         private readonly List<int[]> _movementPath = new List<int[]>();
 
-        public List<int[]> GenerateRootCoordinates(List<int> movementCoordinates, int width, int height)
+        public override List<int[]> GenerateRootCoordinates(List<int> movementCoordinates, int width, int height)
         {
             var coordinatesNum = movementCoordinates.Count / 2;
 

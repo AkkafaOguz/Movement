@@ -101,6 +101,11 @@ namespace Movement
 
         }
 
+        public virtual List<int[]> GenerateRootCoordinates(List<int> movementCoordinates, int width, int height)
+        {
+            return null;
+        }
+
 
     }
 }
