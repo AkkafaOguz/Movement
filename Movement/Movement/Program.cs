@@ -13,6 +13,7 @@ namespace Movement
         {
             var lifeForm = new LifeForm();
             var movement = new Movement(lifeForm.GetLifeFormFromUser());
+
             movement
                 .GetMapDimensionsFromUser()
                 .GetMovementCoordinatesFromUser()

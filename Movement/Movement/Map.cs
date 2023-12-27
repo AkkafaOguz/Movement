@@ -13,7 +13,6 @@ namespace Movement
 
         public Movement GetMapDimensionsFromUser()
         {
-
             Console.WriteLine("Please enter dimensions of map in the order width(w) and height(h)");
             var inputList = new List<int>();
 
@@ -36,7 +35,7 @@ namespace Movement
             Console.WriteLine("Width of the map: {0}", Width);
             Console.WriteLine("Height of the map: {0}", Height);
 
-            return new Movement();
+            return (Movement)this;
         }
     }
 }
