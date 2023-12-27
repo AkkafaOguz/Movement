@@ -5,9 +5,21 @@ namespace Movement
 {
     public class Movement : Map
     {
-        private readonly List<int> _movementCoordinates = new List<int>();
+        public readonly List<int> _movementCoordinates = new List<int>();
+        protected static readonly List<int[]> MovementPath = new List<int[]>();
+        private readonly IMovement _move;
 
-        public List<int> GetMovementCoordinatesFromUser()
+        public Movement(object lifeFormFromUser)
+        {
+            _move = (IMovement)lifeFormFromUser;
+        }
+
+        public Movement()
+        {
+
+        }
+
+        public Movement GetMovementCoordinatesFromUser()
         {
             Console.WriteLine("Please enter movement coordinates in the order X - Y. When you're done please enter 'DONE'!");
             var input = "";
@@ -34,7 +46,8 @@ namespace Movement
                     }
                 }
             }
-            return _movementCoordinates;
+
+            return this;
         }
 
         private bool IsCoordinateValueValid(string input)
@@ -62,48 +75,25 @@ namespace Movement
             return isValueValid;
         }
 
-        public int GetLifeFormFromUser()
-        {
-            Console.WriteLine("Please enter a life form: \nPress '1' for Human \nPress '2' for Alien");
-            var input = "";
-            var inputNumber = 0;
-
-            while (!input.Equals("1") && !input.Equals("2"))
-            {
-                try
-                {
-                    input = Console.ReadLine();
-                    inputNumber = Convert.ToInt32(input);
-
-                    if (inputNumber != 1 && inputNumber != 2)
-                        Console.WriteLine("Please enter a valid value ('1' OR '2')");
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Please enter a valid numeric value ('1' OR '2')");
-                }
-            }
-
-            return inputNumber;
-        }
-
-        public void ReportPathAndActualCoordinate(List<int[]> movementCoordinates)
+        public void ReportPathAndActualCoordinate()
         {
             Console.WriteLine("Report Path:");
 
-            foreach (var x in movementCoordinates)
+            foreach (var x in MovementPath)
             {
                 Console.WriteLine("[" + string.Join(",", x) + "]");
             }
 
             Console.WriteLine("Report Actual Coordinate");
-            Console.WriteLine("[" + string.Join(",", movementCoordinates[movementCoordinates.Count - 1]) + "]");
+            Console.WriteLine("[" + string.Join(",", MovementPath[MovementPath.Count - 1]) + "]");
 
         }
 
-        public virtual List<int[]> GenerateRootCoordinates(List<int> movementCoordinates, int width, int height)
+        public Movement GenerateCoordinates()
         {
-            return null;
+            _move.CalculateRoute(_movementCoordinates, Width, Height);
+
+            return this;
         }
 
 

@@ -8,10 +8,10 @@ namespace Movement
 {
     public class Map
     {
-        public int Width { get; set; }
-        public int Height { get; set; }
+        public int Width { get; private set; }
+        public int Height { get; private set; }
 
-        public Map GetMapDimensionsFromUser()
+        public Movement GetMapDimensionsFromUser()
         {
 
             Console.WriteLine("Please enter dimensions of map in the order width(w) and height(h)");
@@ -36,7 +36,7 @@ namespace Movement
             Console.WriteLine("Width of the map: {0}", Width);
             Console.WriteLine("Height of the map: {0}", Height);
 
-            return this;
+            return new Movement();
         }
     }
 }
